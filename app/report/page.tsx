@@ -1,24 +1,10 @@
 "use client";
-import { db, storage } from "@/lib/firebase";
+import { db } from "@/lib/firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React, { useState } from "react";
-import Image from "next/image";
-const ReportPage = () => {
-  const [preview, setPreview] = useState<string | null>(null);
-  const [file, setFile] = useState<File | null>(null);
-  const [loading, setLoading] = useState(false);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selected = e.target.files?.[0];
-    if (selected) {
-      setPreview(URL.createObjectURL(selected));
-      setFile(selected);
-    } else {
-      setPreview(null);
-      setFile(null);
-    }
-  };
+const ReportPage = () => {
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,61 +17,48 @@ const ReportPage = () => {
     const date = (form.elements.namedItem("date") as HTMLInputElement).value;
     const description = (form.elements.namedItem("description") as HTMLTextAreaElement).value;
 
-    let imageUrl = "";
-    if (file) {
-      // Storage'a yükle
-      const storageRef = ref(storage, `LostItems/${file.name}_${Date.now()}`);
-      await uploadBytes(storageRef, file);
-      imageUrl = await getDownloadURL(storageRef);
-    }
-
-    // Firestore'a kaydet
     await addDoc(collection(db, "LostItems"), {
       name,
       location,
       date,
       description,
-      imageUrl,
       createdAt: Timestamp.now(),
     });
 
     setLoading(false);
-    // İstersen formu sıfırla veya yönlendir
     form.reset();
-    setPreview(null);
-    setFile(null);
     alert("Başvurunuz kaydedildi!");
+  };
+
+  // Fotoğraf yükleme alanı devre dışı ve uyarılı
+  const handlePhotoClick = () => {
+    alert("Fotoğraf ekleme özelliği yakında eklenecek!");
   };
 
   return (
     <div className="pt-20 flex flex-col items-center min-h-screen bg-gray-50">
       <h1 className="text-4xl font-bold text-gray-800 mb-9">Kayıp Eşya Başvurusu</h1>
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md flex flex-col gap-4">
-        {/* ...Dosya seçme alanı aynı kalabilir... */}
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md flex flex-col gap-4"
+      >
         <label className="block text-gray-700 font-bold mb-2">
           Kayıp Eşyanın Fotoğrafı
           <div className="mt-2 flex items-center gap-2">
-            <label
-              htmlFor="file-upload"
-              className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
+            <button
+              type="button"
+              className="cursor-not-allowed bg-gray-400 text-white py-2 px-4 rounded"
+              disabled
+              onClick={handlePhotoClick}
+              tabIndex={0}
             >
               Dosya Seç
-            </label>
-            <input
-              id="file-upload"
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleImageChange}
-            />
+            </button>
             <span className="text-gray-500 text-sm">
-              {preview ? "Dosya seçildi" : "Dosya seçilmedi"}
+              Fotoğraf ekleme özelliği yakında aktif olacak.
             </span>
           </div>
         </label>
-        {preview && (
-          <Image src={preview} alt="Önizleme" className="w-full h-48 object-cover rounded mb-2" />
-        )}
         <label className="block text-gray-700 font-bold mb-2">
           Eşya Adı
           <input
