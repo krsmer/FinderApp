@@ -10,7 +10,7 @@ interface LostItem {
   date: string;
   description: string;
   imageUrl?: string;
-  createdAt?: any;
+  createdAt?: "";
 }
 
 const OverviewPage = () => {
