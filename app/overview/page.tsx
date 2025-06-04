@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
 import Image from "next/image";
 interface LostItem {
   id: string;
@@ -10,7 +10,7 @@ interface LostItem {
   date: string;
   description: string;
   imageUrl?: string;
-  createdAt?: "";
+  createdAt?: Timestamp;
 }
 
 const OverviewPage = () => {
