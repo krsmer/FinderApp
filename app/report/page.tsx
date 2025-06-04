@@ -17,6 +17,12 @@ const ReportPage = () => {
     const date = (form.elements.namedItem("date") as HTMLInputElement).value;
     const description = (form.elements.namedItem("description") as HTMLTextAreaElement).value;
 
+    if (!name || !location || !date || !description) {
+    setLoading(false);
+    alert("Lütfen tüm alanları doldurun.");
+    return;
+  }
+
     await addDoc(collection(db, "LostItems"), {
       name,
       location,
