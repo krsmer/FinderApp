@@ -3,7 +3,7 @@ import { db, storage } from "@/lib/firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React, { useState } from "react";
-
+import Image from "next/image";
 const ReportPage = () => {
   const [preview, setPreview] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -84,7 +84,7 @@ const ReportPage = () => {
           </div>
         </label>
         {preview && (
-          <img src={preview} alt="Önizleme" className="w-full h-48 object-cover rounded mb-2" />
+          <Image src={preview} alt="Önizleme" className="w-full h-48 object-cover rounded mb-2" />
         )}
         <label className="block text-gray-700 font-bold mb-2">
           Eşya Adı

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
-
+import Image from "next/image";
 interface LostItem {
   id: string;
   name: string;
@@ -47,7 +47,7 @@ const OverviewPage = () => {
                 {item.createdAt && item.createdAt.toDate ? item.createdAt.toDate().toLocaleDateString("tr-TR"):""}
               </div>
               {item.imageUrl && (
-                <img
+                <Image
                   src={item.imageUrl}
                   alt={item.name}
                   className="w-full h-48 object-cover rounded mb-4"
