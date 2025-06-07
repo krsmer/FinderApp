@@ -20,7 +20,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
       <Sheet>
         <SheetTrigger asChild>
           <button className="p-2">
-            <RxHamburgerMenu className='cursor-pointer text-black w-6 h-6' />
+            <RxHamburgerMenu className='cursor-pointer dark:text-white text-black w-6 h-6' />
           </button>
         </SheetTrigger>
         
