@@ -42,8 +42,8 @@ const ReportPage = () => {
   };
 
   return (
-    <div className="pt-20 flex flex-col items-center min-h-screen bg-gray-50">
-      <h1 className="text-4xl font-bold text-gray-800 mb-9">Kayıp Eşya Başvurusu</h1>
+    <div className="pt-20 flex flex-col dark:bg-gray-900 items-center min-h-screen bg-gray-50">
+      <h1 className="text-4xl font-bold dark:text-white text-gray-800 mb-9">Kayıp Eşya Başvurusu</h1>
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md flex flex-col gap-4"
