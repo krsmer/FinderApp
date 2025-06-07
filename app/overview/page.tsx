@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
 import Image from "next/image";
+
+
 interface LostItem {
   id: string;
   name: string;
@@ -32,8 +34,8 @@ const OverviewPage = () => {
   }, []);
 
   return (
-    <div className="pt-20 flex flex-col items-center min-h-screen bg-gray-50">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Kayıp Eşyalar</h1>
+    <div className="pt-20 flex flex-col items-center min-h-screen bg-gray-50 dark:bg-gray-900">
+      <h1 className="text-4xl dark:text-white font-bold text-gray-800 mb-8">Kayıp Eşyalar</h1>
       {loading ? (
         <div className="text-gray-500">Yükleniyor...</div>
       ) : items.length === 0 ? (
