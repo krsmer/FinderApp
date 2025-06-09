@@ -28,8 +28,8 @@ const QuestionPage = () => {
   };
 
   return (
-    <div className="pt-20 flex flex-col items-center min-h-screen bg-gray-50">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Sıkça Sorulan Sorular</h1>
+    <div className="pt-20 flex flex-col dark:bg-gray-900 items-center min-h-screen bg-gray-50">
+      <h1 className="text-4xl font-bold dark-gray-500 mb-8">Sıkça Sorulan Sorular</h1>
       <div className="w-full max-w-2xl space-y-4">
         {faqs.map((faq, idx) => (
           <div key={idx} className="bg-white rounded shadow">
