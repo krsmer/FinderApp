@@ -61,7 +61,7 @@ const ReportPage = () => {
   };
 
   return (
-    <div className="pt-20 flex flex-col dark:bg-gray-900 items-center min-h-screen bg-gray-50">
+    <div className="pt-20 flex flex-col dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 items-center min-h-screen bg-gray-50">
       <h1 className="text-4xl font-bold dark:text-white text-gray-800 mb-9">
         Kayıp Eşya Başvurusu
       </h1>

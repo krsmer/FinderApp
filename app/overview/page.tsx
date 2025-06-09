@@ -48,7 +48,7 @@ const OverviewPage = () => {
   };
 
   return (
-    <div className="pt-20 flex flex-col items-center min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="pt-20 flex flex-col items-center min-h-screen bg-gray-50 dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <h1 className="text-4xl dark:text-white font-bold text-gray-800 mb-8">Kayıp Eşyalar</h1>
       {loading ? (
         <div className="text-gray-500">Yükleniyor...</div>
