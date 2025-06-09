@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HomePage = () => {
   return (
-    <main className="flex-grow flex items-center justify-center pt-16 pb-20 md:pb-4 dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen relative">
+    <main className="flex-grow flex  items-center justify-center  pt-16 pb-20 md:pb-4  dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen relative">
       <div className="text-3xl md:text-5xl dark:text-gray-400 text-gray-800 font-semibold text-center max-w-4xl w-full px-4">
         Finder Uygulamasına Hoş Geldin
         <p className="text-base md:text-xl pt-8 md:pt-10 dark:text-gray-400">
